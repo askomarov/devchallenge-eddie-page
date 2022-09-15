@@ -6,7 +6,7 @@ section.promo
     br
     | and fast web services
   .promo__img-wrap
-    img(src="img/hero-image.jpg" width="348" height="145" alt="our office" )
+    img(:src="'img/hero-image.jpg'" width="348" height="145" alt="our office" )
   .promo__join
     h2.promo__join-title Story, emotion
       br
