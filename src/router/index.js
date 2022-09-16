@@ -10,7 +10,7 @@ const router = createRouter({
       name: "Home",
       component: Home,
       meta: {
-        layout: "AppLayoutDefault",
+        layout: "AppLayout",
       },
     },
     {
