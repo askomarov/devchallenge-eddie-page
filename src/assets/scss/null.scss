@@ -27,8 +27,14 @@ html {
 }
 html,
 body {
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   color: $text-color;
+}
+
+#app {
+  height: auto;
+  min-height: 100%;
 }
 
 * {
