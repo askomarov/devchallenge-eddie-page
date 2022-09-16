@@ -44,7 +44,7 @@ section.our-team
   font-weight: 500;
   font-size: size(18px);
   line-height: size(27px);
-  color: $color-warning;
+  color: var(--color-warning);
 }
 
 .team-images {

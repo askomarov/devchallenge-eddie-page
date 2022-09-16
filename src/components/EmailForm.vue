@@ -29,12 +29,12 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background: $text-color-gray-light;
+  background: var(--text-color-gray-light);
   border-radius: 12px;
   &:hover,
   &:focus,
   &:focus-within {
-    outline: 1px solid $color-blue;
+    outline: 1px solid var(--color-blue);
   }
 }
 label {
@@ -59,20 +59,26 @@ input {
     font-weight: inherit;
     font-size: inherit;
     line-height: inherit;
-    color: $text-color-gray;
+    color: var(--text-color-gray);
+  }
+  @media (prefers-color-scheme: dark) {
+    color: #333;
+    &::placeholder {
+      color: #5f5f5f;
+    }
   }
 }
 .email-form__btn-submit {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: $color-blue;
-  color: $color-white;
+  background: var(--color-blue);
+  color: var(--color-white);
   border-radius: inherit;
   padding: 11px 20px;
 
   &:hover {
-    background: $color-blue-dark;
+    background: var(--color-blue-dark);
   }
 }
 </style>

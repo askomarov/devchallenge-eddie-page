@@ -31,7 +31,7 @@ import EmailForm from "../components/EmailForm.vue";
 }
 
 .promo__small {
-  color: $color-blue;
+  color: var(--color-blue);
   font-weight: 500;
   font-size: size(12px);
   line-height: size(18px);

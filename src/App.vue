@@ -3,6 +3,7 @@ import AppLayoutDefault from "./layouts/AppLayoutDefault.vue";
 </script>
 
 <template>
+  
   <AppLayoutDefault>
     <router-view />
   </AppLayoutDefault>

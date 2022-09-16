@@ -1,29 +1,26 @@
 <script setup>
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import SvgSprite from "../components/SvgSprite.vue";
-import VHeader from "../base/VHeader.vue";
+import VFooter from "../base/VFooter.vue";
 import VPromo from "../base/VPromo.vue";
 import VOffer from "../base/VOffer.vue";
 import VWorks from "../base/VWorks.vue";
 import VTeam from "../base/VTeam.vue";
-import VFooter from "../base/VFooter.vue";
 </script>
 
 <template>
-  <SvgSprite></SvgSprite>
-  <VHeader></VHeader>
-  <div class="container content-wrap">
+  <main class="container content-wrap">
     <VPromo></VPromo>
     <VOffer></VOffer>
     <VWorks></VWorks>
     <VTeam></VTeam>
-  </div>
+  </main>
   <VFooter></VFooter>
 </template>
 
 <style lang="scss">
 .content-wrap {
+  flex: 1 0 auto;
   section {
     margin-bottom: 100px;
   }
@@ -68,7 +65,7 @@ label {
   @media (min-width: $width-tablet) {
     font-size: size(14px);
     line-height: size(21px);
-    color: $text-color-gray;
+    color: var(--text-color-gray);
   }
 }
 </style>

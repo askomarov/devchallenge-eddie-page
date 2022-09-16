@@ -15,11 +15,12 @@ import AskomarovCopy from "../components/AskomarovCopy.vue";
 
 <style lang="scss">
 section {
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   height: 100%;
   position: relative;
-  color: $text-color-black;
+  color: var(--text-color-black);
   padding: 4rem 2rem 2rem;
 
   max-width: 475px;
@@ -87,15 +88,21 @@ a.back {
   vertical-align: middle;
   text-align: center;
   text-transform: uppercase;
-  color: $color-white;
-  background: $text-color-black;
+  color: var(--color-white);
+  background: var(--text-color-black);
   font-weight: 700;
   font-size: size(14px);
   line-height: size(21px);
   padding: 1rem 1.5rem;
   &:hover {
-    box-shadow: $box-shadow;
-    background: $bg-dark;
+    box-shadow: var(--box-shadow);
+    background: var(--bg-main);
+  }
+  @media (prefers-color-scheme: dark) {
+    color: #333;
+    &:hover {
+      background: #d5d5d5;
+    }
   }
 }
 .not-found-askomarov {
@@ -107,7 +114,7 @@ a.back {
 .artem:hover {
   span {
     text-decoration: underline;
-    color: $color-warning;
+    color: var(--color-warning);
   }
 }
 </style>

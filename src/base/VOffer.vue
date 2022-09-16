@@ -53,4 +53,10 @@ const getClassName = (name) => {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.our-offer__item {
+  p {
+    color: #333;
+  }
+}
+</style>

@@ -10,7 +10,7 @@ const router = createRouter({
       name: "Home",
       component: Home,
       meta: {
-        layout: "AppLayout",
+        layout: "AppLayoutDefault",
       },
     },
     {
@@ -31,6 +31,6 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach(loadLayoutMiddleware);
+// router.beforeEach(loadLayoutMiddleware);
 
 export default router;

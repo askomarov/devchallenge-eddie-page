@@ -69,19 +69,21 @@ export default {
 <style lang="scss">
 .footer {
   padding: 2rem 0 1rem;
-  color: $color-white;
-  background: $bg-dark;
+  color: var(--color-white);
+  background: var(--bg-main);
 }
 .footer__container {
   @media (min-width: $width-tablet) {
     display: grid;
     grid-template-columns: 1fr 1fr 350px;
+    justify-content: start;
   }
 }
 .footer__nav {
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
+  align-items: flex-start;
 }
 .footer__nav-link {
   font-weight: 400;
@@ -89,14 +91,14 @@ export default {
   line-height: size(36px);
 
   &:hover {
-    color: $text-color-gray;
+    color: var(--text-color-gray);
     text-decoration: underline;
   }
 }
 .footer__form {
   max-width: 350px;
   margin-bottom: 4rem;
-  color: $text-color-gray;
+  color: var(--text-color-gray);
 }
 .footer__copy {
   text-align: center;
@@ -112,7 +114,7 @@ export default {
   }
   span {
     font-weight: 600;
-    color: $color-warning;
+    color: var(--color-warning);
   }
 }
 .footer__social {
@@ -123,7 +125,7 @@ export default {
   font-weight: 800;
   font-size: size(36px);
   line-height: size(53px);
-  
+
   @media (min-width: $width-tablet) {
     margin-bottom: 0.9rem;
   }
@@ -141,10 +143,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-white;
+  color: var(--color-white);
 
   &:hover {
-    color: $text-color-gray;
+    color: var(--text-color-gray);
   }
 }
 </style>

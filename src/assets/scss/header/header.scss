@@ -1,5 +1,5 @@
 .header {
-  color: $text-color-black;
+  color: var(--text-color-black);
   padding: 15px 0px;
   position: relative;
 
@@ -90,7 +90,7 @@
     height: 2px;
     bottom: -2px;
     left: 0;
-    background: $color-blue-dark;
+    background: var(--color-blue-dark);
     transition: width 0.3s ease 0s;
   }
 }
@@ -129,7 +129,7 @@
       margin: 0;
       font-size: size(42px);
       line-height: 100%;
-      color: $color-white;
+      color: var(--color-white);
 
       &:not(:last-child) {
         margin-bottom: 20px;

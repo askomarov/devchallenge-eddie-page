@@ -45,12 +45,15 @@ const works = [
 
 <style lang="scss">
 .our-works {
-  color: $text-color-black;
+  color: var(--text-color-black);
   position: relative;
 
   h2 {
     padding-left: 2rem;
     margin-bottom: size(48px);
+  }
+  h3 {
+    color: inherit;
   }
 }
 
@@ -59,7 +62,7 @@ const works = [
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  color: $color-blue;
+  color: var(--color-blue);
   font-weight: 500;
   font-size: size(18px);
   line-height: size(27px);
@@ -78,7 +81,7 @@ const works = [
   }
 
   &:hover {
-    color: $color-blue-dark;
+    color: var(--color-blue-dark);
     &::after {
       width: 100%;
     }
@@ -116,7 +119,7 @@ const works = [
   border-radius: 12px;
   transition: all 0.3s ease 0s;
   &:hover {
-    box-shadow: $box-shadow;
+    box-shadow: var(--box-shadow);
     .work-item__img-wrap img {
       scale: 1.1;
     }
@@ -149,6 +152,6 @@ const works = [
   }
 }
 .work-item__type {
-  color: $text-color-gray;
+  color: var(--text-color);
 }
 </style>
