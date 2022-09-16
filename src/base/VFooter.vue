@@ -70,7 +70,7 @@ export default {
 .footer {
   padding: 2rem 0 1rem;
   color: var(--color-white);
-  background: var(--bg-main);
+  background: var(--bg-main-dark);
 }
 .footer__container {
   @media (min-width: $width-tablet) {

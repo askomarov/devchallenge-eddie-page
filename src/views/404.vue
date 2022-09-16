@@ -89,14 +89,13 @@ a.back {
   text-align: center;
   text-transform: uppercase;
   color: var(--color-white);
-  background: var(--text-color-black);
+  background: var(--bg-main-dark);
   font-weight: 700;
   font-size: size(14px);
   line-height: size(21px);
   padding: 1rem 1.5rem;
   &:hover {
     box-shadow: var(--box-shadow);
-    background: var(--bg-main);
   }
   @media (prefers-color-scheme: dark) {
     color: #333;
