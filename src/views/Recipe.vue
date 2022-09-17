@@ -56,9 +56,12 @@
           <ul>
             <li>
               <VCheckbox
+                :model-value="true"
                 class="recipe__checkbox"
                 id="ingr1"
                 name="ingr1"
+                :on="true"
+                :checked="true"
               >
                 <template v-slot:label>
                   1 and 1/2 cups (150g) <b>graham cracker crumbs</b> (about 10
@@ -256,14 +259,35 @@ export default {
 </script>
 
 <style lang="scss">
-.recipe {
+.recipe.container {
+  display: grid;
+  gap: 1rem;
+  padding: 0 1rem;
+  max-width: 1030px;
+  @media (min-width: 475px) {
+    padding: 0 1.5rem;
+  }
+  @media (min-width: $width-tablet) {
+    grid-template-columns: 1fr 210px;
+    column-gap: 2rem;
+  }
+  @media (min-width: $width-tablet-h) {
+    gap: 2rem;
+    padding: 0 2rem;
+  }
 }
 .recipe__header {
+  grid-column: 1/-1;
 }
 .recipe__title {
   font-size: size(24px);
   line-height: size(32px);
   margin-bottom: size(12px);
+
+  @media (min-width: $width-tablet) {
+    font-size: size(40px);
+    line-height: size(64px);
+  }
 }
 .recipe__text {
   color: var(--text-color-gray);
@@ -283,6 +307,11 @@ export default {
     background: url("../assets/img/recipe/6dots.svg");
     background-repeat: no-repeat;
     background-size: cover;
+  }
+  @media (min-width: $width-tablet) {
+    font-size: size(14px);
+    line-height: size(17px);
+    margin-bottom: 1.5rem;
   }
 }
 .recipe__img-wrap {
@@ -307,8 +336,14 @@ export default {
 // aside
 .recipe__stat-block {
   @media (min-width: $width-tablet) {
+    grid-column: 2/3;
+    align-self: start;
+    position: sticky;
+    top: 0;
     padding: 2rem;
     box-shadow: var(--box-shadow);
+    padding: 3rem 2rem;
+    border-radius: 12px;
   }
 }
 .recipe-stat {
@@ -317,6 +352,9 @@ export default {
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 1rem;
+  @media (min-width: $width-tablet) {
+    gap: 2rem;
+  }
 }
 .recipe-stat__item {
   display: grid;
@@ -350,6 +388,10 @@ export default {
 }
 // content
 .recipe__content {
+  @media (min-width: $width-tablet) {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
 }
 .recipe-content {
   ul {
@@ -363,21 +405,34 @@ export default {
   }
 
   ol {
+    text-align: justify;
     padding: 0;
-    padding-left: 51px;
     margin: 0;
     list-style: none;
     font-size: size(16px);
     line-height: size(24px);
+    counter-reset: list;
 
     li {
+      // counter-increment: li;
+      padding-left: 51px;
       position: relative;
       &::before {
-        content: "";
-        display: block;
+        counter-increment: list;
+        content: counter(list);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
         width: 36px;
         height: 36px;
         background-color: var(--color-orange);
+        border-radius: 6px;
+        color: var(--color-white);
+
+        position: absolute;
+        top: 0;
+        left: 0;
       }
     }
     li:not(:last-child) {
@@ -391,8 +446,7 @@ export default {
   line-height: size(32px);
   margin-bottom: 1rem;
 }
-.recipe-ingredients {
-}
+
 .recipe-content__subtitle {
   font-weight: 400;
   font-style: italic;
@@ -401,11 +455,15 @@ export default {
   margin-bottom: 0.75rem;
 }
 .recipe-content__src-link {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 2rem;
   color: var(--text-color-gray);
   font-size: size(12px);
   line-height: size(18px);
 }
 .recipe__checkbox {
+  --primary-color: #f2994a;
   display: grid;
   grid-template-columns: auto auto;
   align-items: start;
@@ -413,6 +471,8 @@ export default {
   gap: 9px;
 
   label {
+    align-self: center;
+    color: var(--text-color);
     font-weight: 300;
     font-size: size(14px);
     line-height: size(17px);
