@@ -16,9 +16,14 @@ const props = defineProps({
 });
 </script>
 
-<style>
+<style lang="scss">
 .ascopy {
   text-align: center;
   padding: 0.5rem;
+
+  a:hover span {
+    text-decoration: underline;
+    color: var(--primary-color);
+  }
 }
 </style>

@@ -22,6 +22,14 @@ const router = createRouter({
       },
     },
     {
+      path: "/myteam",
+      name: "MyTeam",
+      component: () => import("../views/MyTeam.vue"),
+      meta: {
+        layout: "AppLayoutHeadCopy",
+      },
+    },
+    {
       path: "/recipe",
       name: "Recipe",
       component: () => import("../views/Recipe.vue"),

@@ -31,8 +31,8 @@ export default {
           text: "Recipe",
         },
         {
-          href: "#",
-          text: "Clients",
+          href: "/myteam",
+          text: "MyTeam",
         },
         {
           href: "#",
