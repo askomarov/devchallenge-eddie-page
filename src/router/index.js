@@ -21,6 +21,14 @@ const router = createRouter({
         layout: "AppLayoutDefault",
       },
     },
+    {
+      path: "/recipe",
+      name: "Recipe",
+      component: () => import("../views/Recipe.vue"),
+      meta: {
+        layout: "AppLayoutArtem",
+      },
+    },
     // {
     //   path: "/team",
     //   component: () => import("../views/Team.vue"),
@@ -31,6 +39,6 @@ const router = createRouter({
   ],
 });
 
-// router.beforeEach(loadLayoutMiddleware);
+router.beforeEach(loadLayoutMiddleware);
 
 export default router;

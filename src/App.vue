@@ -1,12 +1,11 @@
 <script setup>
-import AppLayoutDefault from "./layouts/AppLayoutDefault.vue";
+import AppLayout from "./layouts/AppLayout.vue";
 </script>
 
 <template>
-  
-  <AppLayoutDefault>
+  <AppLayout>
     <router-view />
-  </AppLayoutDefault>
+  </AppLayout>
 </template>
 
 <style lang="scss"></style>

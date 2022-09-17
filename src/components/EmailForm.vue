@@ -22,7 +22,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .email-form__input-wrap {
   padding: 4px;
   position: relative;

@@ -27,8 +27,8 @@ export default {
           text: "404",
         },
         {
-          href: "#",
-          text: "Our Works",
+          href: "/recipe",
+          text: "Recipe",
         },
         {
           href: "#",

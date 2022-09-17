@@ -1,5 +1,5 @@
 <template lang="pug">
-p(:class='parentClass') created by
+p(:class='parentClass').ascopy created by
   | &nbsp;
   a(href="https://github.com/askomarov" :class='linkClass') 🤔&nbsp;
     span Askomarov
@@ -16,4 +16,9 @@ const props = defineProps({
 });
 </script>
 
-<style></style>
+<style>
+.ascopy {
+  text-align: center;
+  padding: 0.5rem;
+}
+</style>
