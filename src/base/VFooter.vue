@@ -6,13 +6,13 @@ footer.footer
     .footer__social.social
       p.social__title Edie
       .social__list
-        a(href="#").social__link
+        a(href="#" aria-label="link to instagram").social__link
           svg(width="24" height="24")
             use(href="#instagram")
-        a(href="#").social__link
+        a(:href="socialLinks.linkedin" aria-label="link to linkedin").social__link
           svg(width="24" height="24")
             use(href="#linkedin")
-        a(href="#").social__link
+        a(href="#" aria-label="link to twitter").social__link
           svg(width="24" height="24")
             use(href="#twitter")
     .footer__form
@@ -23,15 +23,7 @@ footer.footer
       a(href="https://github.com/askomarov").footer__copy-link 🤔&nbsp;
         span Askomarov
 </template>
-<!-- <svg class="icon">
-  <use xlink:href="#instagram"></use>
-</svg
->><svg class="icon">
-  <use xlink:href="#linkedin"></use>
-</svg
->><svg class="icon">
-  <use xlink:href="#twitter"></use>
-</svg> -->
+
 <script>
 import EmailForm from "../components/EmailForm.vue";
 export default {
@@ -59,6 +51,11 @@ export default {
         {
           href: "#",
           text: "Contact",
+        },
+      ],
+      socialLinks: [
+        {
+          linkedin: "https://www.linkedin.com/in/askomarov/",
         },
       ],
     };

@@ -74,8 +74,16 @@ const team = [
 
 <style lang="scss">
 .team {
+  padding-top: 2rem;
 }
 .team__header {
+  @media (min-width: $width-tablet) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3rem;
+    padding: 0 1.5rem;
+  }
+
   h3 {
     text-transform: uppercase;
     font-weight: 600;
@@ -98,16 +106,38 @@ const team = [
   line-height: size(48px);
   letter-spacing: -0.045em;
   margin-bottom: size(38px);
+
+  @media (min-width: $width-tablet) {
+    grid-row: 1/3;
+  }
 }
 .team-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  @media (min-width: $width-tablet-h) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 585px 585px;
+  }
 }
 .team-item {
   position: relative;
-  padding: 1rem 1.5rem 2rem;
+  padding: 0.75rem 1.5rem 0.75rem;
   &:nth-child(even) {
-    margin-top: 5rem;
+    margin-top: 2.5rem;
+    @media (min-width: $width-mobile-h) {
+      padding: 1rem 1.5rem 2rem;
+      margin-top: 5rem;
+    }
+    @media (min-width: $width-tablet-h) {
+      margin-top: 0;
+    }
+  }
+  @media (min-width: $width-tablet-h) {
+    padding: 1rem 3rem 1rem;
+    &:nth-child(2),
+    &:nth-child(5) {
+      margin-top: 5rem;
+    }
   }
 }
 
