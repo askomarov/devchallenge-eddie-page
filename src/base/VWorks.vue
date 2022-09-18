@@ -7,7 +7,9 @@ section.our-works
     li.our-works__list-item(href="#" v-for="(item, index) in works" :key="index")
       a(href="#").work-item
         .work-item__img-wrap
-          img(:src="`../img/${item.img}`" width="270" height="270" :alt="item.title")
+          picture
+            source(:srcset="`../img/${item.imgWebp}.webp`" type="image/webp")
+            img(:src="`../img/${item.img}`" width="270" height="270" :alt="item.title")
         p.work-item__type {{item.type}}
         h3.work-item__title {{item.title}}
   a(href="#").our-works__more-link
@@ -24,21 +26,25 @@ const works = [
     title: "Smart home dashboard",
     type: "Full stack application",
     img: "smarthome.jpg",
+    imgWebp: "smarthome",
   },
   {
     title: "Onboard application",
     type: "UX/UI design",
     img: "onboard.png",
+    imgWebp: "onboard",
   },
   {
     title: "Booking system",
     type: "Mobile application",
     img: "booking.png",
+    imgWebp: "booking",
   },
   {
     title: "Juice product homepage",
     type: "Frontend application",
     img: "juice-product.png",
+    imgWebp: "juice-product",
   },
 ];
 </script>

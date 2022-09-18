@@ -4,12 +4,18 @@
       <h2 class="recipe__title">{{ recipe.title }}</h2>
       <p class="recipe__text">{{ recipe.text }}</p>
       <div class="recipe__img-wrap">
-        <img
-          :src="`${recipe.img}`"
-          :alt="recipe.imgAlt"
-          width="270"
-          heigh="190"
-        />
+        <picture>
+          <source
+            :srcset="`${recipe.img}.webp`"
+            type="image/webp"
+          />
+          <img
+            :src="`${recipe.img}.png`"
+            :alt="recipe.imgAlt"
+            width="270"
+            heigh="190"
+          />
+        </picture>
       </div>
     </header>
     <aside class="recipe__stat-block">
@@ -221,7 +227,7 @@ export default {
       recipe: {
         title: "Classic Cheesecake Recipe",
         text: "Look no further for a creamy and ultra smooth classic cheesecake recipe! Paired with a buttery graham cracker crust, no one can deny its simple decadence. For the best results, bake in a water bath.",
-        img: "img/recipe/photo1.png",
+        img: "img/recipe/photo1",
         imgAlt: "cheesecake",
         yields: "12 servings",
         prepareTime: "45 minutes",

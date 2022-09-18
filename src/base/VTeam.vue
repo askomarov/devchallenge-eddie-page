@@ -6,11 +6,17 @@ section.our-team
     p Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, omnis.
   .our-team__imgs-wrap.team-images
     .team-images__img.team-images__img--1
-      img(:src="'../img/person3.png'" width="178" height="178" alt="Veronica PR")
+      picture
+        source(:srcset="`../img/person3.webp`" type="image/webp")
+        img(:src="'../img/person3.png'" width="178" height="178" alt="Veronica PR")
     .team-images__img.team-images__img--2
-      img(:src="'../img/person1.png'" width="178" height="178" alt="Mike Disigner")
+      picture
+        source(:srcset="`../img/person1.webp`" type="image/webp")
+        img(:src="'../img/person1.png'" width="178" height="178" alt="Mike Disigner")
     .team-images__img.team-images__img--3
-      img(:src="'../img/person2.png'" width="178" height="178" alt="Mark Frontend dev")
+      picture
+        source(:srcset="`../img/person2.webp`" type="image/webp")
+        img(:src="'../img/person2.png'" width="178" height="178" alt="Mark Frontend dev")
 
 </template>
 

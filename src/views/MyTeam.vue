@@ -16,6 +16,10 @@
       >
         <div class="team-item__img-wrap">
           <picture>
+            <source
+              :srcset="`img/team/${human.img}.webp`"
+              type="image/webp"
+            />
             <img
               :src="`img/team/${human.img}.png`"
               :alt="human.name"
