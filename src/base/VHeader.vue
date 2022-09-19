@@ -8,39 +8,22 @@ header(id="header").header
       button(@click="toggleMenu" type="button" :aria-hidden="isMenuOpened" :aria-expanded="isMenuOpened" aria-label="open/close menu").header-menu__button.menu-button
         span.menu-button__icon
       ul.header-menu__list
-        li(v-for="(link,index) in menu", :key="index" ).header-menu__item
+        li(v-for="(link,index) in getMainMenu", :key="index" ).header-menu__item
           routerLink(:to="link.href").header-menu__link {{link.text}}
 </template>
 
 <script>
+import { useAppStore } from "../store";
+import { mapState } from "pinia";
 export default {
   name: "VHeader",
   data() {
     return {
-      menu: [
-        {
-          href: "/",
-          text: "Home",
-        },
-        {
-          href: "/404",
-          text: "404",
-        },
-        {
-          href: "/recipe",
-          text: "Recipe",
-        },
-        {
-          href: "/myteam",
-          text: "MyTeam",
-        },
-        {
-          href: "#",
-          text: "Contact",
-        },
-      ],
       isMenuOpened: false,
     };
+  },
+  computed: {
+    ...mapState(useAppStore, ["getMainMenu"]),
   },
   methods: {
     toggleMenu() {

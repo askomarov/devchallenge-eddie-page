@@ -37,6 +37,14 @@ const router = createRouter({
         layout: "AppLayoutArtem",
       },
     },
+
+    {
+      path: "/jobs",
+      component: () => import("../views/GithubJobs.vue"),
+      meta: {
+        layout: "AppLayoutDefault",
+      },
+    },
     // {
     //   path: "/team",
     //   component: () => import("../views/Team.vue"),

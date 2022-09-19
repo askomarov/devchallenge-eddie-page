@@ -2,7 +2,8 @@
 footer.footer
   .container.footer__container
     nav.footer__nav
-      a(:href="link.href" v-for="(link,index) in menu", :key="index" ).footer__nav-link {{link.text}}
+      routerLink(:to="link.href" v-for="(link,index) in getMainMenu", :key="index" ).footer__nav-link
+        | {{link.text}}
     .footer__social.social
       p.social__title Edie
       .social__list
@@ -26,6 +27,8 @@ footer.footer
 
 <script>
 import EmailForm from "../components/EmailForm.vue";
+import { useAppStore } from "../store";
+import { mapState } from "pinia";
 export default {
   name: "VFooter",
   components: { EmailForm },
@@ -59,6 +62,9 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    ...mapState(useAppStore, ["getMainMenu"]),
   },
 };
 </script>

@@ -94,6 +94,11 @@
     transition: width 0.3s ease 0s;
   }
 }
+.router-link-exact-active.header-menu__link {
+  &::before {
+    width: 100%;
+  }
+}
 
 .header-menu--opened {
   .header-menu__button {
