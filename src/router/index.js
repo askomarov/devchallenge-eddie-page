@@ -37,9 +37,17 @@ const router = createRouter({
         layout: "AppLayoutArtem",
       },
     },
+    {
+      path: "/neoncursor",
+      name: "NeonCursor",
+      component: () => import("../views/NeonCursor.vue"),
+      meta: {
+        layout: "AppLayoutArtem",
+      },
+    },
 
     {
-      path: "/jobs",
+      path: "/github",
       component: () => import("../views/GithubJobs.vue"),
       meta: {
         layout: "AppLayoutDefault",

@@ -22,7 +22,7 @@ import VTeam from "../base/VTeam.vue";
 .content-wrap {
   flex: 1 0 auto;
   section {
-    margin-bottom: 100px;
+    margin-bottom: 5rem;
   }
 }
 h2 {
@@ -32,7 +32,7 @@ h2 {
 
   @media (min-width: $width-tablet) {
     font-size: size(36px);
-    line-height: size(54px);
+    line-height: size(48px);
   }
 }
 

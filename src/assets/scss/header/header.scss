@@ -2,6 +2,7 @@
   color: var(--text-color-black);
   padding: 15px 0px;
   position: relative;
+  z-index: 1;
 
   @media (max-width: 850px) {
     padding: 15px 0;
@@ -90,7 +91,7 @@
     height: 2px;
     bottom: -2px;
     left: 0;
-    background: var(--color-blue-dark);
+    background: var(--color-warning);
     transition: width 0.3s ease 0s;
   }
 }

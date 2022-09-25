@@ -1,6 +1,8 @@
 <template>
   <VHeader></VHeader>
-  <slot />
+  <main>
+    <slot />
+  </main>
   <AskomarovCopy />
 </template>
 

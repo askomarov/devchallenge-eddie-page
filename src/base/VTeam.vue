@@ -31,7 +31,7 @@ section.our-team
   h2 {
     font-weight: 500;
     font-size: 36px;
-    line-height: 54px;
+    line-height: 42px;
   }
   @media (min-width: $width-mobile-h) {
     grid-template-columns: auto 1fr;

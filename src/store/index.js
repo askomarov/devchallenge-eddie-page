@@ -22,8 +22,12 @@ export const useAppStore = defineStore("AppStore", {
           text: "MyTeam",
         },
         {
-          href: "/jobs",
-          text: "Jobs",
+          href: "/github",
+          text: "Github",
+        },
+        {
+          href: "/neoncursor",
+          text: "Neon Cursor",
         },
       ],
     };

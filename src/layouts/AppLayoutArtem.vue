@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <VHeader></VHeader>
+  <VHeader></VHeader>
+  <main>
     <slot />
-    <AskomarovCopy />
-  </div>
+  </main>
+  <AskomarovCopy />
 </template>
 <script setup>
 import VHeader from "../base/VHeader.vue";

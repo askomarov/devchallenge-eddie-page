@@ -33,7 +33,7 @@ import EmailForm from "../components/EmailForm.vue";
 }
 
 .promo__small {
-  color: var(--color-blue);
+  color: var(--color-warning);
   font-weight: 500;
   font-size: size(12px);
   line-height: size(18px);
@@ -68,9 +68,30 @@ import EmailForm from "../components/EmailForm.vue";
 
 .promo__join {
   max-width: 366px;
+  @media (min-width: $width-tablet) {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 1.5rem;
+
+    h2 {
+      grid-column: 1/-1;
+      text-align: center;
+      margin-bottom: 0;
+      br {
+        display: none;
+      }
+      // grid-column: 2/3;
+      // grid-row: 1/3;
+    }
+  }
 }
 
 .promo__join-text {
   margin-bottom: 2rem;
+  @media (min-width: $width-tablet) {
+    margin-bottom: 0;
+  }
 }
 </style>

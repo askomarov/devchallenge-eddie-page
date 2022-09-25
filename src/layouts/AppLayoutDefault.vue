@@ -1,8 +1,9 @@
 <template>
   <SvgSprite></SvgSprite>
   <VHeader></VHeader>
-  <!-- <h1>Default layout</h1> -->
-  <slot />
+  <main>
+    <slot />
+  </main>
 </template>
 <script setup>
 import SvgSprite from "../components/SvgSprite.vue";
