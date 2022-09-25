@@ -145,8 +145,11 @@ input {
 }
 .repos-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 1rem;
+  @media (min-width: $width-tablet) {
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 .repo-item {
 }
