@@ -34,6 +34,7 @@ export const useAppStore = defineStore("AppStore", {
       reposPerPage: 5,
       page: 1,
       reposToRender: [],
+      searchValue: "",
     };
   },
   // getters
@@ -42,16 +43,27 @@ export const useAppStore = defineStore("AppStore", {
       return state.mainMenu;
     },
     getTotalPages(state) {
-      if (state.repos.length === 0) {
-        return 1;
+      if (!state.searchValue) {
+        if (state.repos.length === 0) {
+          return 1;
+        } else {
+          return Math.ceil(state.repos.length / state.reposPerPage);
+        }
       } else {
-        return Math.ceil(state.repos.length / state.reposPerPage);
+        return Math.ceil(state.reposToRender.length / state.reposPerPage);
       }
     },
     getReposToRednder(state) {
       let from = state.page * state.reposPerPage - state.reposPerPage;
       let to = state.page * state.reposPerPage;
-      return (state.reposToRender = state.repos.slice(from, to));
+      if (state.searchValue === "") {
+        return (state.reposToRender = state.repos.slice(from, to));
+      } else {
+        state.reposToRender = state.repos.filter((rep) =>
+          rep.name.includes(state.searchValue)
+        );
+        return state.reposToRender.slice(from, to);
+      }
     },
   },
   actions: {
@@ -60,6 +72,9 @@ export const useAppStore = defineStore("AppStore", {
     },
     setCurrentPage(num) {
       this.page = num;
+    },
+    setSearchValue(value) {
+      this.searchValue = value;
     },
   },
 });

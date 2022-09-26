@@ -1,9 +1,10 @@
 <script setup>
 import InputGroup from "../components/InputGroup.vue";
 import Pagination from "../components/Pagination.vue";
-import { ref, reactive, watch } from "vue";
+import { ref, reactive, watch, onMounted } from "vue";
 import { useAppStore } from "../store";
-
+const pageRange = ref(3);
+const marginPages = ref(3);
 const store = useAppStore();
 const name = ref(null);
 const newName = ref(null);
@@ -12,8 +13,7 @@ const reposPerPage = store.reposPerPage;
 const page = ref(1);
 const from = ref(0);
 const to = ref(1);
-const totalPages = store.getTotalPages;
-const requestedArray = ref([]);
+const searchValue = ref(null);
 // const reposOnPage = ref(store.getReposToRednder);
 async function getPost(name) {
   const URL = `https://api.github.com/users/${name}/repos?page=1&per_page=100`;
@@ -47,16 +47,28 @@ const onBtnClickCopyText = (text) => {
   );
 };
 const clickCallback = () => {
-  console.log(page.value);
-
-  store.setCurrentPage(page.value);
-  return;
+  return store.setCurrentPage(page.value);
 };
 
-// watch(() => {
-//   if (newName.value) {
-//   }
-// });
+const onResize = () => {
+  if (window.innerWidth < 768) {
+    pageRange.value = 1;
+    marginPages.value = 1;
+  }
+  return pageRange;
+};
+
+watch(searchValue, (newValue, oldValue) => {
+  // console.log(newValue, oldValue);
+  if (newValue) {
+    store.setSearchValue(newValue);
+  } else {
+    store.setSearchValue("");
+  }
+});
+onMounted(() => {
+  onResize();
+});
 </script>
 
 <template>
@@ -96,10 +108,20 @@ const clickCallback = () => {
     </div>
 
     <div
-      v-if="store.repos"
+      v-if="store.repos.length"
       class="repos-section"
     >
-      <h2>We have received a list of {{ store.repos.length }} repositories:</h2>
+      <div>
+        <h2>
+          We have received a list of {{ store.repos.length }} repositories:
+        </h2>
+        <input
+          type="text"
+          v-model="searchValue"
+          placeholder="Search..."
+        />
+      </div>
+
       <ul class="repos-list">
         <li
           v-for="rep in store.getReposToRednder"
@@ -130,8 +152,8 @@ const clickCallback = () => {
         v-model="page"
         :page-count="store.getTotalPages"
         :hide-prev-next="true"
-        :page-range="3"
-        :margin-pages="3"
+        :page-range="pageRange"
+        :margin-pages="marginPages"
         :click-handler="clickCallback"
         :disabled-class="'rt-pagination__btn--disabled'"
         :container-class="'rt-pagination'"
@@ -158,7 +180,7 @@ const clickCallback = () => {
       </Pagination>
       <div class="page-counter">
         <span>{{ page }}</span
-        >/<span>{{ store.getTotalPages }}</span>
+        >/<span>{{ store.getTotalPages || 1 }}</span>
       </div>
     </div>
   </div>
@@ -193,28 +215,28 @@ const clickCallback = () => {
         background-color: #c4c4c4;
       }
     }
-  }
-  input {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background: var(--text-color-gray-light);
-    border-radius: 12px;
-    font-family: $font-family;
-    border-radius: inherit;
-    padding: 5px 10px;
-    margin: 0 5px;
-    border: 0;
-    outline: 0;
-    font-weight: 500;
-    font-size: size(14px);
-    line-height: 100%;
+    input {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background: var(--text-color-gray-light);
+      border-radius: 12px;
+      font-family: $font-family;
+      border-radius: inherit;
+      padding: 5px 10px;
+      margin: 0 5px;
+      border: 0;
+      outline: 0;
+      font-weight: 500;
+      font-size: size(14px);
+      line-height: 100%;
 
-    &:hover,
-    &:focus,
-    &:focus-within {
-      outline: 1px solid var(--color-blue);
+      &:hover,
+      &:focus,
+      &:focus-within {
+        outline: 1px solid var(--color-blue);
+      }
     }
   }
   .repos-section {
@@ -223,10 +245,12 @@ const clickCallback = () => {
     height: 100%;
     gap: 0.5rem;
     margin: 0 auto;
+    align-items: center;
   }
   .repos-list {
     flex: 1;
     display: grid;
+    width: 90%;
     align-items: start;
     align-content: start;
     gap: 1rem;
@@ -243,17 +267,26 @@ const clickCallback = () => {
   .repo-item {
   }
   .repo-item__group {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0rem;
     margin-bottom: 0.5rem;
-    display: flex;
-    flex-wrap: nowrap;
+    display: grid;
+    position: relative;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    @media (min-width: $width-tablet) {
+      column-gap: 2rem;
+    }
+
+    input {
+      text-overflow: ellipsis;
+    }
   }
   .repo-item__title {
+    font-size: 0.8rem;
     display: inline-block;
     flex: 0 0 auto;
   }
   .repo-item__link {
-    margin-left: 2rem;
     display: inline-block;
     max-width: 100%;
     overflow-x: hidden;
