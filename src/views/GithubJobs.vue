@@ -95,7 +95,10 @@ const clickCallback = () => {
       </a>
     </div>
 
-    <div v-if="store.repos">
+    <div
+      v-if="store.repos"
+      class="repos-section"
+    >
       <h2>We have received a list of {{ store.repos.length }} repositories:</h2>
       <ul class="repos-list">
         <li
@@ -119,50 +122,60 @@ const clickCallback = () => {
             :readonly="true"
             @btnEvent="onBtnClickCopyText(rep.git_url)"
           >
-            <template v-slot:buttonSlot>Copy</template>
+            <template v-slot:buttonSlot>Copy SSH</template>
           </InputGroup>
         </li>
       </ul>
+      <Pagination
+        v-model="page"
+        :page-count="store.getTotalPages"
+        :hide-prev-next="true"
+        :page-range="3"
+        :margin-pages="3"
+        :click-handler="clickCallback"
+        :disabled-class="'rt-pagination__btn--disabled'"
+        :container-class="'rt-pagination'"
+        :page-link-class="'rt-pagination__btn'"
+        :prev-link-class="'rt-pagination__btn rt-pagination__btn--prev'"
+        :next-link-class="'rt-pagination__btn rt-pagination__btn--next'"
+        :active-class="'rt-pagination__btn--current'"
+      >
+        <template #iconarrow>
+          <svg
+            width="7"
+            height="11"
+            viewBox="0 0 12 18"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M1.31585 0.583588C1.90246 -0.00136659 2.85221 -1.94013e-05 3.43716 0.586597L10.7705 7.94076C11.3543 8.5262 11.3543 9.47363 10.7705 10.0591L3.43716 17.4132C2.85221 17.9999 1.90246 18.0012 1.31585 17.4162C0.729229 16.8313 0.727881 15.8815 1.31284 15.2949L7.59001 8.99992L1.31284 2.70491C0.727881 2.11829 0.729229 1.16854 1.31585 0.583588Z"
+              fill="currentColor"
+            />
+          </svg>
+        </template>
+      </Pagination>
+      <div class="page-counter">
+        <span>{{ page }}</span
+        >/<span>{{ store.getTotalPages }}</span>
+      </div>
     </div>
-    <Pagination
-      v-model="page"
-      :page-count="store.getTotalPages"
-      :hide-prev-next="true"
-      :page-range="3"
-      :margin-pages="3"
-      :click-handler="clickCallback"
-      :disabled-class="'rt-pagination__btn--disabled'"
-      :container-class="'rt-pagination'"
-      :page-link-class="'rt-pagination__btn'"
-      :prev-link-class="'rt-pagination__btn rt-pagination__btn--prev'"
-      :next-link-class="'rt-pagination__btn rt-pagination__btn--next'"
-      :active-class="'rt-pagination__btn--current'"
-    >
-      <template #iconarrow>
-        <svg
-          width="7"
-          height="11"
-          viewBox="0 0 12 18"
-          aria-hidden="true"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M1.31585 0.583588C1.90246 -0.00136659 2.85221 -1.94013e-05 3.43716 0.586597L10.7705 7.94076C11.3543 8.5262 11.3543 9.47363 10.7705 10.0591L3.43716 17.4132C2.85221 17.9999 1.90246 18.0012 1.31585 17.4162C0.729229 16.8313 0.727881 15.8815 1.31284 15.2949L7.59001 8.99992L1.31284 2.70491C0.727881 2.11829 0.729229 1.16854 1.31585 0.583588Z"
-            fill="currentColor"
-          />
-        </svg>
-      </template>
-    </Pagination>
   </div>
 </template>
 
 <style lang="scss">
+#app {
+  height: 100%;
+}
 .github {
   &.container {
+    height: 100%;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
     gap: 1rem;
   }
 
@@ -170,7 +183,9 @@ const clickCallback = () => {
     justify-self: start;
     display: inline-grid;
     gap: 1rem;
-
+    label {
+      font-size: 0.8rem;
+    }
     button {
       border: 1px solid var(--color-blue);
       color: var(--color-blue);
@@ -202,26 +217,48 @@ const clickCallback = () => {
       outline: 1px solid var(--color-blue);
     }
   }
+  .repos-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 0.5rem;
+    margin: 0 auto;
+  }
   .repos-list {
+    flex: 1;
     display: grid;
+    align-items: start;
+    align-content: start;
     gap: 1rem;
+    margin-bottom: 1rem;
     @media (min-width: $width-tablet) {
       gap: 2rem;
       grid-template-columns: 1fr 1fr;
     }
+  }
+  .btn-submit {
+    padding: 0.3rem;
+    font-size: 0.7rem;
   }
   .repo-item {
   }
   .repo-item__group {
     padding: 0.5rem 1rem;
     margin-bottom: 0.5rem;
+    display: flex;
+    flex-wrap: nowrap;
   }
   .repo-item__title {
     display: inline-block;
+    flex: 0 0 auto;
   }
   .repo-item__link {
     margin-left: 2rem;
     display: inline-block;
+    max-width: 100%;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   a {
     text-decoration: underline;
@@ -232,6 +269,9 @@ const clickCallback = () => {
   .user-name-link {
     display: inline-flex;
     align-items: center;
+    img {
+      margin-right: 0.8rem;
+    }
   }
   // pagination
 
