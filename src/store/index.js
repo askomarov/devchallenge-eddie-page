@@ -53,6 +53,9 @@ export const useAppStore = defineStore("AppStore", {
         return Math.ceil(state.reposToRender.length / state.reposPerPage);
       }
     },
+    getCurrentPage(state) {
+      return state.page;
+    },
     getReposToRednder(state) {
       let from = state.page * state.reposPerPage - state.reposPerPage;
       let to = state.page * state.reposPerPage;
@@ -71,9 +74,15 @@ export const useAppStore = defineStore("AppStore", {
       this.repos = payload;
     },
     setCurrentPage(num) {
+      console.log(num);
+      
       this.page = num;
     },
     setSearchValue(value) {
+      // if (this.reposToRender <= this.reposPerPage) {
+      //   console.log(this.page);
+        this.page = 1;
+      // }
       this.searchValue = value;
     },
   },

@@ -283,3 +283,72 @@ export default {
     ></a>
   </div>
 </template>
+<style lang="scss" scoped>
+
+  .rt-pagination {
+    display: flex;
+    font-size: 16px;
+    --btn-icon-gap: 5px;
+
+    @media (min-width: $width-tablet) {
+      --btn-icon-gap: 16px;
+    }
+  }
+  .rt-pagination__btn {
+    cursor: pointer;
+    color: var(--text-color-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-white);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    &:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+  }
+  .rt-pagination__btn--current {
+    background-color: var(--primary-color);
+    color: var(--color-white);
+    &:hover {
+      background-color: var(--primary-color);
+      color: var(--color-white);
+    }
+  }
+  .rt-pagination__btn--prev {
+    color: var(--text-color-grey-light);
+    transform: rotate(180deg);
+    border-color: #d5dde7;
+
+    &:hover {
+      background-color: var(--primary-color);
+      color: var(--color-white);
+    }
+
+    @media (min-width: $width-mobile-h) {
+      margin-right: var(--btn-icon-gap);
+    }
+  }
+
+  .rt-pagination__btn--loaded {
+    width: 28px;
+    flex: 0 0 28px;
+  }
+
+  .rt-pagination__btn--next {
+    color: var(--text-color-grey-light);
+    border-color: #d5dde7;
+
+    &:hover {
+      background-color: var(--primary-color);
+      color: var(--color-white);
+    }
+
+    @media (min-width: $width-mobile-h) {
+      margin-left: var(--btn-icon-gap);
+    }
+  }
+</style>

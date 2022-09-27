@@ -9,7 +9,6 @@ const store = useAppStore();
 const name = ref(null);
 const newName = ref(null);
 const state = reactive({});
-const reposPerPage = store.reposPerPage;
 const page = ref(1);
 const from = ref(0);
 const to = ref(1);
@@ -36,7 +35,6 @@ const onClickGetpost = () => {
   }
 };
 const onBtnClickCopyText = (text) => {
-  console.log(text);
   navigator.clipboard.writeText(text).then(
     function () {
       console.log("Async: Copying to clipboard was successful!");
@@ -60,8 +58,9 @@ const onResize = () => {
 
 watch(searchValue, (newValue, oldValue) => {
   // console.log(newValue, oldValue);
+  page.value = store.getCurrentPage;
+  store.setSearchValue(newValue);
   if (newValue) {
-    store.setSearchValue(newValue);
   } else {
     store.setSearchValue("");
   }
@@ -179,18 +178,22 @@ onMounted(() => {
         </template>
       </Pagination>
       <div class="page-counter">
-        <span>{{ page }}</span
+        <span>{{ store.getCurrentPage }}</span
         >/<span>{{ store.getTotalPages || 1 }}</span>
       </div>
     </div>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #app {
   height: 100%;
 }
 .github {
+  h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
   &.container {
     height: 100%;
     padding-top: 2rem;
@@ -260,7 +263,7 @@ onMounted(() => {
       grid-template-columns: 1fr 1fr;
     }
   }
-  .btn-submit {
+  :deep(.btn-submit) {
     padding: 0.3rem;
     font-size: 0.7rem;
   }
@@ -303,75 +306,9 @@ onMounted(() => {
     display: inline-flex;
     align-items: center;
     img {
+      width: 60px;
+      height: 60px;
       margin-right: 0.8rem;
-    }
-  }
-  // pagination
-
-  .rt-pagination {
-    display: flex;
-    font-size: 16px;
-    --btn-icon-gap: 5px;
-
-    @media (min-width: $width-tablet) {
-      --btn-icon-gap: 16px;
-    }
-  }
-  .rt-pagination__btn {
-    cursor: pointer;
-    color: var(--text-color-grey);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    background-color: var(--color-white);
-    border: 1px solid transparent;
-    border-radius: 10px;
-    &:hover {
-      border-color: var(--primary-color);
-      color: var(--primary-color);
-    }
-  }
-  .rt-pagination__btn--current {
-    background-color: var(--primary-color);
-    color: var(--color-white);
-    &:hover {
-      background-color: var(--primary-color);
-      color: var(--color-white);
-    }
-  }
-  .rt-pagination__btn--prev {
-    color: var(--text-color-grey-light);
-    transform: rotate(180deg);
-    border-color: #d5dde7;
-
-    &:hover {
-      background-color: var(--primary-color);
-      color: var(--color-white);
-    }
-
-    @media (min-width: $width-mobile-h) {
-      margin-right: var(--btn-icon-gap);
-    }
-  }
-
-  .rt-pagination__btn--loaded {
-    width: 28px;
-    flex: 0 0 28px;
-  }
-
-  .rt-pagination__btn--next {
-    color: var(--text-color-grey-light);
-    border-color: #d5dde7;
-
-    &:hover {
-      background-color: var(--primary-color);
-      color: var(--color-white);
-    }
-
-    @media (min-width: $width-mobile-h) {
-      margin-left: var(--btn-icon-gap);
     }
   }
 }

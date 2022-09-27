@@ -9,7 +9,7 @@ header(id="header").header
         span.menu-button__icon
       ul.header-menu__list
         li(v-for="(link,index) in getMainMenu", :key="index" ).header-menu__item
-          routerLink(:to="link.href").header-menu__link {{link.text}}
+          routerLink(:to="link.href" @click="toggleMenu").header-menu__link {{link.text}}
 </template>
 
 <script>
