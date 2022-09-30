@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "pinia": "^2.0.22",
+    "swiper": "^8.4.2",
     "three": "^0.144.0",
     "threejs-toys": "^0.0.8",
     "vue": "^3.2.37",

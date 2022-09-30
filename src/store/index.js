@@ -26,6 +26,10 @@ export const useAppStore = defineStore("AppStore", {
           text: "Github",
         },
         {
+          href: "/slider-page",
+          text: "slider-page",
+        },
+        {
           href: "/neoncursor",
           text: "Neon Cursor",
         },
@@ -75,13 +79,13 @@ export const useAppStore = defineStore("AppStore", {
     },
     setCurrentPage(num) {
       console.log(num);
-      
+
       this.page = num;
     },
     setSearchValue(value) {
       // if (this.reposToRender <= this.reposPerPage) {
       //   console.log(this.page);
-        this.page = 1;
+      this.page = 1;
       // }
       this.searchValue = value;
     },

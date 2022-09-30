@@ -45,7 +45,13 @@ const router = createRouter({
         layout: "AppLayoutArtem",
       },
     },
-
+    {
+      path: "/slider-page",
+      component: () => import("../views/slider-page.vue"),
+      meta: {
+        layout: "AppLayoutDefault",
+      },
+    },
     {
       path: "/github",
       component: () => import("../views/GithubJobs.vue"),

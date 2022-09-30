@@ -9,18 +9,7 @@
   @media (min-width: $width-mobile-h) {
     padding: 0 24px;
   }
-
-  @media (min-width: $width-tablet) {
-  }
-
   @media (min-width: $width-tablet-h) {
     padding: 0 30px;
-  }
-}
-
-.container--ex-tracker {
-  max-width: 988px;
-  @media (min-width: $width-tablet) {
-    padding: 0 44px;
   }
 }
