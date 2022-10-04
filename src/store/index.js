@@ -39,6 +39,7 @@ export const useAppStore = defineStore("AppStore", {
       page: 1,
       reposToRender: [],
       searchValue: "",
+      currentUserName: null,
     };
   },
   // getters
@@ -60,6 +61,9 @@ export const useAppStore = defineStore("AppStore", {
     getCurrentPage(state) {
       return state.page;
     },
+    getCurrentUserName(state) {
+      return state.currentUserName;
+    },
     getReposToRednder(state) {
       let from = state.page * state.reposPerPage - state.reposPerPage;
       let to = state.page * state.reposPerPage;
@@ -74,6 +78,9 @@ export const useAppStore = defineStore("AppStore", {
     },
   },
   actions: {
+    setCurrentUserName(name) {
+      this.currentUserName = name;
+    },
     setRepos(payload) {
       this.repos = payload;
     },

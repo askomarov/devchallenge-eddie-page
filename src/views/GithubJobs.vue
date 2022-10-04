@@ -1,4 +1,5 @@
 <script setup>
+import VUserCard from "../components/VUserCard.vue";
 import InputGroup from "../components/InputGroup.vue";
 import Pagination from "../components/Pagination.vue";
 import { ref, reactive, watch, onMounted } from "vue";
@@ -13,8 +14,8 @@ const page = ref(1);
 const from = ref(0);
 const to = ref(1);
 const searchValue = ref(null);
-// const reposOnPage = ref(store.getReposToRednder);
-async function getPost(name) {
+
+async function getUserRepos(name) {
   const URL = `https://api.github.com/users/${name}/repos?page=1&per_page=100`;
   try {
     const response = await fetch(URL).then((res) => res.json());
@@ -23,13 +24,14 @@ async function getPost(name) {
     return Promise.reject(error);
   }
 }
-const onClickGetpost = () => {
+const onClickGetUserRepos = () => {
   newName.value = name.value;
   if (newName.value) {
-    getPost(newName.value)
+    getUserRepos(newName.value)
       .then((data) => {
         state.data = data;
         store.repos = data;
+        store.setCurrentUserName(newName.value);
       })
       .catch((err) => console.log(err));
   }
@@ -72,6 +74,7 @@ onMounted(() => {
 
 <template>
   <div class="github container">
+    <VUserCard></VUserCard>
     <form>
       <label for="gitname">Input any github username</label>
       <input
@@ -83,7 +86,7 @@ onMounted(() => {
       />
       <button
         type="submit"
-        @click.prevent="onClickGetpost()"
+        @click.prevent="onClickGetUserRepos()"
         :disabled="!name"
       >
         Get Repos
@@ -91,10 +94,7 @@ onMounted(() => {
     </form>
     <div v-if="newName">
       <h2>Link to user github page:</h2>
-      <a
-        class="user-name-link"
-        :href="`https://github.com/${newName}`"
-      >
+      <a class="user-name-link" :href="`https://github.com/${newName}`">
         <img
           v-if="state.data"
           :src="state.data[0].owner.avatar_url"
@@ -106,19 +106,12 @@ onMounted(() => {
       </a>
     </div>
 
-    <div
-      v-if="store.repos.length"
-      class="repos-section"
-    >
+    <div v-if="store.repos.length" class="repos-section">
       <div>
         <h2>
           We have received a list of {{ store.repos.length }} repositories:
         </h2>
-        <input
-          type="text"
-          v-model="searchValue"
-          placeholder="Search..."
-        />
+        <input type="text" v-model="searchValue" placeholder="Search..." />
       </div>
 
       <ul class="repos-list">
@@ -129,12 +122,9 @@ onMounted(() => {
         >
           <div class="repo-item__group">
             <h4 class="repo-item__title">Link to the repository:</h4>
-            <a
-              class="repo-item__link"
-              :href="rep.html_url"
-              target="_blank"
-              >{{ rep.name }}</a
-            >
+            <a class="repo-item__link" :href="rep.html_url" target="_blank">{{
+              rep.name
+            }}</a>
           </div>
           <InputGroup
             type="text"
@@ -162,12 +152,7 @@ onMounted(() => {
         :active-class="'rt-pagination__btn--current'"
       >
         <template #iconarrow>
-          <svg
-            width="7"
-            height="11"
-            viewBox="0 0 12 18"
-            aria-hidden="true"
-          >
+          <svg width="7" height="11" viewBox="0 0 12 18" aria-hidden="true">
             <path
               fill-rule="evenodd"
               clip-rule="evenodd"

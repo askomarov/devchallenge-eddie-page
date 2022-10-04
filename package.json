@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "dayjs": "^1.11.5",
     "pinia": "^2.0.22",
     "swiper": "^8.4.2",
     "three": "^0.144.0",
