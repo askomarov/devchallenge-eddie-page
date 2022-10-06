@@ -42,8 +42,8 @@ watch(userName, (newValue, oldValue) => {
 // onMounted(() => getUserInfo(props.userName));
 </script>
 <template>
-  <div v-if="user" class="ui card">
-    <div class="image">
+  <div v-if="user" class="user-card">
+    <div class="user-card__image">
       <img :src="user.avatar_url" width="150" height="150" />
     </div>
     <div class="content">
@@ -63,9 +63,9 @@ watch(userName, (newValue, oldValue) => {
         {{ user.bio || "no info about user" }}
       </div>
     </div>
-    <div class="extra content">
+    <div class="user-card__extra-content">
       <a v-if="user.blog" target="_blank" :href="user.blog"
-        >Blog site: {{ user.blog }}</a
+        ><small>Blog site: </small>{{ user.blog }}</a
       >
       <a :href="`https://github.com/${userName}?tab=followers`" target="_blank">
         <i class="user icon"></i>
@@ -76,5 +76,32 @@ watch(userName, (newValue, oldValue) => {
 </template>
 
 
-<style>
+<style scoped lang="scss">
+.user-card {
+  padding: 1rem;
+  border: 1px solid var(--primary-color);
+  box-shadow: 2px 2px 6px 0 var(--primary-color);
+  border-radius: 1rem;
+  a {
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--primary-color);
+    }
+  }
+}
+.user-card__image {
+  display: flex;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--primary-color);
+  img {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+}
+.user-card__extra-content {
+  display: grid;
+  justify-items: start;
+}
 </style>

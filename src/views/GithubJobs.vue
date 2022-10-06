@@ -61,7 +61,7 @@ const onResize = () => {
 watch(searchValue, (newValue, oldValue) => {
   // console.log(newValue, oldValue);
   page.value = store.getCurrentPage;
-  store.setSearchValue(newValue);
+  store.setSearchValue(newValue.toLowerCase());
   if (newValue) {
   } else {
     store.setSearchValue("");

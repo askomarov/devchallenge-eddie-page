@@ -1,167 +1,147 @@
 <template>
-  <div class="reviews container">
-    <swiper
-      class="slider-first hero__swiper"
-      :modules="modules"
-      :slides-per-view="1"
-      :space-between="0"
-      @swiper="setThumbsSwiper"
-      watch-slides-progress
-      :parallax="true"
-    >
-      <div
-        slot="container-start"
-        class="parallax-bg"
-        data-swiper-parallax="-23%"
-      >
-        <svg
-          width="1440"
-          height="560"
-          preserveAspectRatio="none"
-          viewBox="0 0 1440 560"
+  <div class="slider-page">
+    <div class="container">
+      <h1>Two Swiper sliders</h1>
+      <p>
+        The bottom slider shows random phrases of famous people.
+        <i
+          ><a
+            _target="blank"
+            href="https://quote-garden.herokuapp.com/api/v3/quotes"
+            >quote-garden.herokuapp.com
+          </a></i
         >
-          <g
-            mask='url("#SvgjsMask1000")'
-            fill="none"
-          >
-            <rect
+        API request implemented. Random phrases will be loaded every time the
+        page is reloaded.
+      </p>
+      <div class="reviews">
+        <swiper
+          class="slider-first hero__swiper"
+          :modules="modules"
+          :slides-per-view="1"
+          :space-between="0"
+          @swiper="setThumbsSwiper"
+          watch-slides-progress
+          :parallax="true"
+        >
+          <div class="parallax-bg" data-swiper-parallax="-23%">
+            <svg
               width="1440"
               height="560"
-              x="0"
-              y="0"
-              fill="#0e2a47"
-            ></rect>
-            <path
-              d="M505.05,435.489C557.258,434.528,606.009,412.009,634.99,368.573C667.85,319.323,686.433,257.13,659.091,204.616C630.014,148.77,567.961,116.459,505.05,119.002C445.978,121.39,399.424,164.324,371.165,216.253C344.298,265.625,337.253,325.545,366.548,373.516C394.802,419.781,450.849,436.487,505.05,435.489"
-              fill="rgba(28, 83, 142, 0.4)"
-              class="triangle-float1"
-            ></path>
-            <path
-              d="M1345.6732016788 63.590799911581335L1447.792218214111 68.94263079076515 1453.1440490932948-33.17638574454572 1351.0250325579839-38.52821662372954z"
-              fill="rgba(28, 83, 142, 0.4)"
-              class="triangle-float1"
-            ></path>
-            <path
-              d="M17.3533421705272 82.9960199305948L100.75996661354442 211.43095866043805 229.1949053433877 128.02433421742083 145.78828090037047-0.4106045124224238z"
-              fill="rgba(28, 83, 142, 0.4)"
-              class="triangle-float3"
-            ></path>
-            <path
-              d="M483.729,340.204C509.44,339.927,536.996,336.159,550.983,314.584C566.023,291.386,565.67,260.318,550.509,237.199C536.527,215.878,509.225,211.774,483.729,212.028C458.814,212.276,433.095,217.816,419.211,238.505C403.735,261.566,399.035,292.611,413.913,316.063C428.051,338.349,457.339,340.489,483.729,340.204"
-              fill="rgba(28, 83, 142, 0.4)"
-              class="triangle-float3"
-            ></path>
-            <path
-              d="M918.6810028189012 380.07193832777875L1032.382343775867 428.3352941332724 1080.6456995813605 314.6339531763066 966.9443586243948 266.37059737081296z"
-              fill="rgba(28, 83, 142, 0.4)"
-              class="triangle-float1"
-            ></path>
-            <path
-              d="M71.21125796524309 366.79525957692425L25.875537091194445 445.31903152853744 104.39930904280763 490.6547524025861 149.73502991685626 412.1309804509729z"
-              fill="rgba(28, 83, 142, 0.4)"
-              class="triangle-float2"
-            ></path>
-          </g>
-          <defs>
-            <mask id="SvgjsMask1000">
-              <rect
-                width="1440"
-                height="560"
-                fill="#ffffff"
-              ></rect>
-            </mask>
-          </defs>
-        </svg>
+              preserveAspectRatio="none"
+              viewBox="0 0 1440 560"
+            >
+              <g mask='url("#SvgjsMask1000")' fill="none">
+                <rect
+                  width="1440"
+                  height="560"
+                  x="0"
+                  y="0"
+                  fill="#0e2a47"
+                ></rect>
+                <path
+                  d="M505.05,435.489C557.258,434.528,606.009,412.009,634.99,368.573C667.85,319.323,686.433,257.13,659.091,204.616C630.014,148.77,567.961,116.459,505.05,119.002C445.978,121.39,399.424,164.324,371.165,216.253C344.298,265.625,337.253,325.545,366.548,373.516C394.802,419.781,450.849,436.487,505.05,435.489"
+                  fill="rgba(28, 83, 142, 0.4)"
+                  class="triangle-float1"
+                ></path>
+                <path
+                  d="M1345.6732016788 63.590799911581335L1447.792218214111 68.94263079076515 1453.1440490932948-33.17638574454572 1351.0250325579839-38.52821662372954z"
+                  fill="rgba(28, 83, 142, 0.4)"
+                  class="triangle-float1"
+                ></path>
+                <path
+                  d="M17.3533421705272 82.9960199305948L100.75996661354442 211.43095866043805 229.1949053433877 128.02433421742083 145.78828090037047-0.4106045124224238z"
+                  fill="rgba(28, 83, 142, 0.4)"
+                  class="triangle-float3"
+                ></path>
+                <path
+                  d="M483.729,340.204C509.44,339.927,536.996,336.159,550.983,314.584C566.023,291.386,565.67,260.318,550.509,237.199C536.527,215.878,509.225,211.774,483.729,212.028C458.814,212.276,433.095,217.816,419.211,238.505C403.735,261.566,399.035,292.611,413.913,316.063C428.051,338.349,457.339,340.489,483.729,340.204"
+                  fill="rgba(28, 83, 142, 0.4)"
+                  class="triangle-float3"
+                ></path>
+                <path
+                  d="M918.6810028189012 380.07193832777875L1032.382343775867 428.3352941332724 1080.6456995813605 314.6339531763066 966.9443586243948 266.37059737081296z"
+                  fill="rgba(28, 83, 142, 0.4)"
+                  class="triangle-float1"
+                ></path>
+                <path
+                  d="M71.21125796524309 366.79525957692425L25.875537091194445 445.31903152853744 104.39930904280763 490.6547524025861 149.73502991685626 412.1309804509729z"
+                  fill="rgba(28, 83, 142, 0.4)"
+                  class="triangle-float2"
+                ></path>
+              </g>
+              <defs>
+                <mask id="SvgjsMask1000">
+                  <rect width="1440" height="560" fill="#ffffff"></rect>
+                </mask>
+              </defs>
+            </svg>
+          </div>
+          <SwiperSlide
+            class="hero__slide-1"
+            v-for="slide in wisePhrase"
+            :key="slide._id"
+          >
+            <div class="hero__title">
+              <h2>{{ slide.quoteAuthor }}</h2>
+            </div>
+            <p class="hero__text-feature">"{{ slide.quoteText }}"</p>
+          </SwiperSlide>
+        </swiper>
+        <swiper
+          class="slider-second"
+          :thumbs="{ swiper: thumbsSwiper }"
+          :slidesPerView="5"
+          :space-between="15"
+          :loop="true"
+          :modules="modules"
+          :navigation="true"
+          :centeredSlides="true"
+          :mousewheel="true"
+          :pagination="{
+            dynamicBullets: true,
+            clickable: true,
+          }"
+        >
+          <swiper-slide>
+            <img
+              height="270"
+              width="270"
+              src="https://swiperjs.com/demos/images/nature-1.jpg" /></swiper-slide
+          ><swiper-slide
+            ><img
+              height="270"
+              width="270"
+              src="https://swiperjs.com/demos/images/nature-2.jpg"
+          /></swiper-slide>
+          <swiper-slide
+            ><img
+              height="270"
+              width="270"
+              src="https://swiperjs.com/demos/images/nature-3.jpg"
+            />
+          </swiper-slide>
+          <swiper-slide>
+            <img
+              height="270"
+              width="270"
+              src="https://swiperjs.com/demos/images/nature-8.jpg"
+          /></swiper-slide>
+          <swiper-slide>
+            <img
+              height="270"
+              width="270"
+              src="https://swiperjs.com/demos/images/nature-10.jpg"
+            />
+          </swiper-slide>
+        </swiper>
       </div>
-      <SwiperSlide class="hero__slide-1">
-        <p class="hero__title">Краски 1</p>
-        <p class="hero__text-feature">
-          Идеально подходят для стен и других поверхностей. Найди свой идеальный
-          цвет!
-        </p>
-      </SwiperSlide>
-      <SwiperSlide class="hero__slide-1">
-        <p class="hero__title">Краски 2</p>
-        <p class="hero__text-feature">
-          Идеально подходят для стен и других поверхностей. Найди свой идеальный
-          цвет!
-        </p>
-      </SwiperSlide>
-      <SwiperSlide class="hero__slide-1">
-        <p class="hero__title">Краски 3</p>
-        <p class="hero__text-feature">
-          Идеально подходят для стен и других поверхностей. Найди свой идеальный
-          цвет!
-        </p>
-      </SwiperSlide>
-      <SwiperSlide class="hero__slide-1">
-        <p class="hero__title">Краски 4</p>
-        <p class="hero__text-feature">
-          Идеально подходят для стен и других поверхностей. Найди свой идеальный
-          цвет!
-        </p>
-      </SwiperSlide>
-      <SwiperSlide class="hero__slide-1">
-        <p class="hero__title">Краски 5</p>
-        <p class="hero__text-feature">
-          Идеально подходят для стен и других поверхностей. Найди свой идеальный
-          цвет!
-        </p>
-      </SwiperSlide>
-    </swiper>
-    <swiper
-      class="slider-second"
-      :thumbs="{ swiper: thumbsSwiper }"
-      :slidesPerView="5"
-      :space-between="15"
-      :loop="true"
-      :modules="modules"
-      :navigation="true"
-      :centeredSlides="true"
-      :autoplay="true"
-      :mousewheel="true"
-      :pagination="{
-        dynamicBullets: true,
-        clickable: true,
-      }"
-    >
-      <swiper-slide>
-        <img
-          height="270"
-          width="270"
-          src="https://swiperjs.com/demos/images/nature-1.jpg" /></swiper-slide
-      ><swiper-slide
-        ><img
-          height="270"
-          width="270"
-          src="https://swiperjs.com/demos/images/nature-2.jpg"
-      /></swiper-slide>
-      <swiper-slide
-        ><img
-          height="270"
-          width="270"
-          src="https://swiperjs.com/demos/images/nature-3.jpg"
-        />
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          height="270"
-          width="270"
-          src="https://swiperjs.com/demos/images/nature-8.jpg"
-      /></swiper-slide>
-      <swiper-slide>
-        <img
-          height="270"
-          width="270"
-          src="https://swiperjs.com/demos/images/nature-10.jpg"
-        />
-      </swiper-slide>
-    </swiper>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed, ref, onMounted, onBeforeMount } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import {
   Mousewheel,
@@ -193,9 +173,57 @@ const onSlideChange = () => {
 const setThumbsSwiper = (swiper) => {
   thumbsSwiper.value = swiper;
 };
+let wisePhrase = ref(
+  { quoteAuthor: "null", quoteText: "null", _id: 1 },
+  { quoteAuthor: "null", quoteText: "null", _id: 2 },
+  { quoteAuthor: "null", quoteText: "null", _id: 3 },
+  { quoteAuthor: "null", quoteText: "null", _id: 4 },
+  { quoteAuthor: "null", quoteText: "null", _id: 5 }
+);
+const URL = "https://quote-garden.herokuapp.com/api/v3/quotes/";
+const getRandomQuote = () => {
+  try {
+    return fetch(`${URL}random?count=5`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => data.data);
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+const setNewWisePhrase = async () => {
+  console.log("get");
+  wisePhrase.value = await getRandomQuote();
+  console.log("done");
+  return wisePhrase.value;
+};
+
+onBeforeMount(() => {
+  setNewWisePhrase();
+  console.log("mounted");
+});
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.slider-page {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  color: var(--color-white);
+  background-color: var(--text-color);
+  height: 100%;
+  align-items: center;
+
+  h1,
+  p {
+    margin: revert;
+  }
+}
+
 .parallax-bg {
   position: absolute;
   left: 0;
@@ -342,14 +370,16 @@ const setThumbsSwiper = (swiper) => {
   padding: 1rem;
   grid-area: title;
   font-size: 2.8rem;
-  margin-bottom: 1rem;
-  line-height: 88%;
+  line-height: 1.1;
+  @media (min-width: $width-tablet) {
+    margin-bottom: 1rem;
+  }
 }
 .hero__text-feature {
-  padding: 1rem;
   grid-area: text;
   font-size: 1.06rem;
   line-height: 130%;
+  padding: 0 1rem;
 }
 .swiper-slide {
   user-select: none;
