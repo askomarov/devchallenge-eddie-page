@@ -216,6 +216,7 @@ onBeforeMount(() => {
   color: var(--color-white);
   background-color: var(--text-color);
   width: 100%;
+  flex: 1;
   h1,
   p {
     margin: revert;
@@ -372,10 +373,13 @@ a {
   text-align: center;
   padding: 1rem;
   grid-area: title;
-  font-size: 2.8rem;
-  line-height: 1.1;
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.1;
+  }
   @media (min-width: $width-tablet) {
     margin-bottom: 1rem;
+    font-size: 2.8rem;
   }
 }
 .hero__text-feature {

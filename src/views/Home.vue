@@ -9,12 +9,12 @@ import VTeam from "../base/VTeam.vue";
 </script>
 
 <template>
-  <main class="container content-wrap">
+  <div class="container content-wrap">
     <VPromo></VPromo>
     <VOffer></VOffer>
     <VWorks></VWorks>
     <VTeam></VTeam>
-  </main>
+  </div>
   <VFooter></VFooter>
 </template>
 
