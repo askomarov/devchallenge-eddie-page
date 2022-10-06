@@ -47,6 +47,7 @@ const router = createRouter({
     },
     {
       path: "/slider-page",
+      name: "Slider",
       component: () => import("../views/slider-page.vue"),
       meta: {
         layout: "AppLayoutDefault",

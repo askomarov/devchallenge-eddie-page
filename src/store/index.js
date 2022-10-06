@@ -27,7 +27,7 @@ export const useAppStore = defineStore("AppStore", {
         },
         {
           href: "/slider-page",
-          text: "slider-page",
+          text: "Slider",
         },
         {
           href: "/neoncursor",
