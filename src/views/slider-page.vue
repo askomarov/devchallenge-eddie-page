@@ -6,7 +6,7 @@
         The bottom slider shows random phrases of famous people.
         <i
           ><a
-            _target="blank"
+            target="_blank"
             href="https://quote-garden.herokuapp.com/api/v3/quotes"
             >quote-garden.herokuapp.com
           </a></i
@@ -215,12 +215,15 @@ onBeforeMount(() => {
   padding-bottom: 2rem;
   color: var(--color-white);
   background-color: var(--text-color);
-  height: 100%;
-  align-items: center;
-
+  width: 100%;
   h1,
   p {
     margin: revert;
+  }
+}
+a {
+  &:hover {
+    text-decoration: underline;
   }
 }
 
