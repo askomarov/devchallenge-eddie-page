@@ -9,14 +9,12 @@ dayjs.extend(relativeTime);
 dayjs.extend(localizedFormat);
 
 const store = useAppStore();
-// const props = defineProps({
-//   userName: {
-//     type: String,
-//     required: true,
-//   },
-// });
-
-const userName = computed(() => store.getCurrentUserName);
+const props = defineProps({
+  userNameProp: {
+    type: String,
+    required: true,
+  },
+});
 const user = ref(null);
 
 async function getUserInfo(name) {
@@ -30,16 +28,22 @@ async function getUserInfo(name) {
     console.log(error);
   }
 }
-
-watch(userName, (newValue, oldValue) => {
-  if (userName) {
-    getUserInfo(userName.value);
-  } else {
+onMounted(() => {
+  if (props.userNameProp) {
+    getUserInfo(props.userNameProp);
   }
 });
-// console.log(props.userName);
-
-// onMounted(() => getUserInfo(props.userName));
+watch(
+  () => props.userNameProp,
+  (newValue, oldValue) => {
+    // console.log(
+    //   "Watch props.selected function called with args:",
+    //   newValue,
+    //   oldValue
+    // );
+    getUserInfo(props.userNameProp);
+  }
+);
 </script>
 <template>
   <div v-if="user" class="user-card">
@@ -50,7 +54,7 @@ watch(userName, (newValue, oldValue) => {
       <a
         class="header"
         target="_blank"
-        :href="`https://github.com/${userName}`"
+        :href="`https://github.com/${userNameProp}`"
         >{{ user.name }}</a
       >
       <div class="meta">
@@ -67,9 +71,13 @@ watch(userName, (newValue, oldValue) => {
       <a v-if="user.blog" target="_blank" :href="user.blog"
         ><small>Blog site: </small>{{ user.blog }}</a
       >
-      <a :href="`https://github.com/${userName}?tab=followers`" target="_blank">
+      <a
+        v-if="user.followers > 0"
+        :href="`${user.followers_url}`"
+        target="_blank"
+      >
         <i class="user icon"></i>
-        {{ user.followers || 0 }} followers
+        {{ user.followers }} followers
       </a>
     </div>
   </div>

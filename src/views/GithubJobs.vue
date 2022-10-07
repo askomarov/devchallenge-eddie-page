@@ -2,7 +2,7 @@
 import VUserCard from "../components/VUserCard.vue";
 import InputGroup from "../components/InputGroup.vue";
 import Pagination from "../components/Pagination.vue";
-import { ref, reactive, watch, onMounted } from "vue";
+import { ref, reactive, watch, onMounted, computed } from "vue";
 import { useAppStore } from "../store";
 const pageRange = ref(3);
 const marginPages = ref(3);
@@ -14,6 +14,7 @@ const page = ref(1);
 const from = ref(0);
 const to = ref(1);
 const searchValue = ref(null);
+const userNameProp = computed(() => store.getCurrentUserName);
 
 async function getUserRepos(name) {
   const URL = `https://api.github.com/users/${name}/repos?page=1&per_page=100`;
@@ -74,7 +75,7 @@ onMounted(() => {
 
 <template>
   <div class="github container">
-    <VUserCard></VUserCard>
+    <VUserCard v-if="userNameProp !== null" :userNameProp="userNameProp"></VUserCard>
     <form>
       <label for="gitname">Input any github username</label>
       <input
