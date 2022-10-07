@@ -197,15 +197,12 @@ const getRandomQuote = () => {
   }
 };
 const setNewWisePhrase = async () => {
-  console.log("get");
   wisePhrase.value = await getRandomQuote();
-  console.log("done");
   return wisePhrase.value;
 };
 
 onBeforeMount(() => {
   setNewWisePhrase();
-  console.log("mounted");
 });
 </script>
 

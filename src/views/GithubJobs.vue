@@ -15,11 +15,15 @@ const from = ref(0);
 const to = ref(1);
 const searchValue = ref(null);
 const userNameProp = computed(() => store.getCurrentUserName);
+const user = ref(null);
 
 async function getUserRepos(name) {
   const URL = `https://api.github.com/users/${name}/repos?page=1&per_page=100`;
   try {
     const response = await fetch(URL).then((res) => res.json());
+    user.value = await fetch(`https://api.github.com/users/${name}`).then(
+      (res) => res.json()
+    );
     return response;
   } catch (error) {
     return Promise.reject(error);
@@ -75,7 +79,10 @@ onMounted(() => {
 
 <template>
   <div class="github container">
-    <VUserCard v-if="userNameProp !== null" :userNameProp="userNameProp"></VUserCard>
+    <VUserCard
+      v-if="userNameProp !== null"
+      :userNameProp="userNameProp"
+    ></VUserCard>
     <form>
       <label for="gitname">Input any github username</label>
       <input
@@ -93,12 +100,12 @@ onMounted(() => {
         Get Repos
       </button>
     </form>
-    <div v-if="newName">
+    <div v-if="user">
       <h2>Link to user github page:</h2>
-      <a class="user-name-link" :href="`https://github.com/${newName}`">
+      <a class="user-name-link" :href="user.html_url">
         <img
-          v-if="state.data"
-          :src="state.data[0].owner.avatar_url"
+          v-if="user"
+          :src="user?.avatar_url || user?.gravatar_id"
           width="60"
           height="60"
           alt=""
@@ -107,7 +114,7 @@ onMounted(() => {
       </a>
     </div>
 
-    <div v-if="store.repos.length" class="repos-section">
+    <div v-if="user && user.public_repos > 0" class="repos-section">
       <div>
         <h2>
           We have received a list of {{ store.repos.length }} repositories:
@@ -168,6 +175,14 @@ onMounted(() => {
         >/<span>{{ store.getTotalPages || 1 }}</span>
       </div>
     </div>
+    <div
+      v-if="newName === user?.login.toLowerCase() && user?.public_repos === 0"
+    >
+      <h3>
+        {{ newName }}
+        does not have any public repositories.
+      </h3>
+    </div>
   </div>
 </template>
 
@@ -182,12 +197,14 @@ onMounted(() => {
   }
   &.container {
     height: 100%;
+    width: 100%;
     padding-top: 2rem;
     padding-bottom: 2rem;
     display: flex;
     flex-direction: column;
     align-items: start;
     gap: 1rem;
+    max-width: 1000px;
   }
 
   form {
