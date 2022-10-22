@@ -240,6 +240,8 @@ const productImages = ['instagram.svg', 'linkedin.svg', 'twitter.svg', 'vite.svg
   grid-area: img;
   max-width: 100%;
   overflow: hidden;
+  position: relative;
+  z-index: 0;
 }
 
 .product-card__images {
