@@ -31,6 +31,7 @@ section {
     max-width: $max-width;
   }
 }
+
 .content {
   flex: 1 0 auto;
   justify-self: center;
@@ -41,13 +42,16 @@ section {
   justify-items: start;
   align-content: center;
   margin-bottom: 2rem;
+
   @media (min-width: $width-tablet) {
     align-items: start;
     grid-template-columns: 1fr 1fr;
   }
 }
+
 img {
   justify-self: center;
+
   @media (min-width: $width-tablet) {
     align-self: center;
     width: 100%;
@@ -55,15 +59,18 @@ img {
     grid-row: 1/4;
   }
 }
+
 h2 {
   font-weight: 500;
   font-size: size(48px);
   line-height: size(71px);
+
   @media (min-width: $width-tablet) {
     font-size: size(64px);
     line-height: size(90px);
   }
 }
+
 p.not-found {
   position: absolute;
   top: 1rem;
@@ -74,15 +81,18 @@ p.not-found {
   letter-spacing: -0.08em;
   text-transform: uppercase;
 }
+
 p {
   font-weight: 400;
   font-size: size(18px);
   line-height: size(27px);
+
   @media (min-width: $width-tablet) {
     font-size: size(24px);
     line-height: size(36px);
   }
 }
+
 a.back {
   display: inline-block;
   vertical-align: middle;
@@ -94,22 +104,28 @@ a.back {
   font-size: size(14px);
   line-height: size(21px);
   padding: 1rem 1.5rem;
+
   &:hover {
     box-shadow: var(--box-shadow);
   }
+
   @media (prefers-color-scheme: dark) {
-    color: #333;
+    color: var(--text-color);
+
     &:hover {
       background: #d5d5d5;
+      color: var(--bg-main);
     }
   }
 }
+
 .not-found-askomarov {
   grid-column: 1/-1;
   text-align: center;
   width: 100%;
   justify-self: stretch;
 }
+
 .artem:hover {
   span {
     text-decoration: underline;

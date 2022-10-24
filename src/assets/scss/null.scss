@@ -33,10 +33,12 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text-color: #fff;
+    --text-color: #ffffff;
+    --text-color-black: #ffffff;
     --bg-main: #4f4f4f;
     --text-color-black: #f2f2f2;
     --text-color-gray: #f2f2f2;
+    --box-shadow: 0px 10px 30px rgba(51, 51, 51, 0.75);
   }
 }
 html {

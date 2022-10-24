@@ -37,7 +37,7 @@ h2 {
 }
 
 h3 {
-  color: #333333;
+  // color: #333333;
   font-weight: 500;
   font-size: size(18px);
   line-height: size(27px);

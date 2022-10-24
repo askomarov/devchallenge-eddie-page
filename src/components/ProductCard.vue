@@ -75,9 +75,9 @@ const productImages = ['instagram.svg', 'linkedin.svg', 'twitter.svg', 'vite.svg
                   @swiper="setThumbsSwiper"
                   watch-slides-progress>
             <SwiperSlide class=""
-                         v-for="slide, i in productImages"
+                         v-for="(slide, i) in productImages"
                          :key="i">
-              <img :src="`img/${slide}`"
+              <img :src="`img/team/photo${i + 1}.png`"
                    width="270"
                    height="270"
                    alt="some descr" />
@@ -100,7 +100,7 @@ const productImages = ['instagram.svg', 'linkedin.svg', 'twitter.svg', 'vite.svg
             <SwiperSlide class=""
                          v-for="slide, i in productImages"
                          :key="i">
-              <img :src="`img/${slide}`"
+              <img :src="`img/team/photo${i + 1}.png`"
                    width="60"
                    height="60"
                    alt="some descr" />
@@ -114,11 +114,22 @@ const productImages = ['instagram.svg', 'linkedin.svg', 'twitter.svg', 'vite.svg
 
 
 <style lang="scss" scoped>
-.product-card {}
+.product-card {
+  color: var(--text-color);
+  filter: invert(1);
+}
+
+.swiper-button-next {
+  right: 0;
+}
+
+.swiper-button-prev {
+  left: 0;
+}
 
 .product-card__content {
   >* {
-    outline: 1px solid #fff;
+    outline: 1px solid;
     padding: 0.3rem 0.5rem;
     border-radius: 0.7rem;
   }
@@ -242,6 +253,10 @@ const productImages = ['instagram.svg', 'linkedin.svg', 'twitter.svg', 'vite.svg
   overflow: hidden;
   position: relative;
   z-index: 0;
+
+  img {
+    filter: invert(1);
+  }
 }
 
 .product-card__images {

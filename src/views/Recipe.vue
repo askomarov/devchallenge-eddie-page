@@ -5,50 +5,38 @@
       <p class="recipe__text">{{ recipe.text }}</p>
       <div class="recipe__img-wrap">
         <picture>
-          <source
-            :srcset="`${recipe.img}.webp`"
-            type="image/webp"
-          />
-          <img
-            :src="`${recipe.img}.png`"
-            :alt="recipe.imgAlt"
-            width="270"
-            heigh="190"
-          />
+          <source :srcset="`${recipe.img}.webp`"
+                  type="image/webp" />
+          <img :src="`${recipe.img}.png`"
+               :alt="recipe.imgAlt"
+               width="270"
+               heigh="190" />
         </picture>
       </div>
     </header>
     <aside class="recipe__stat-block">
       <dl class="recipe-stat">
         <div class="recipe-stat__item recipe-stat__item--colored">
-          <SpanIcon
-            class="recipe-stat__item-icon"
-            :icon-name="'local_dining'"
-          ></SpanIcon>
+          <SpanIcon class="recipe-stat__item-icon"
+                    :icon-name="'local_dining'"></SpanIcon>
           <dt>yields</dt>
           <dd>{{ recipe.yields }}</dd>
         </div>
         <div class="recipe-stat__item">
-          <SpanIcon
-            class="recipe-stat__item-icon"
-            :icon-name="'schedule'"
-          ></SpanIcon>
+          <SpanIcon class="recipe-stat__item-icon"
+                    :icon-name="'schedule'"></SpanIcon>
           <dt>prep time</dt>
           <dd>{{ recipe.prepareTime }}</dd>
         </div>
         <div class="recipe-stat__item">
-          <SpanIcon
-            class="recipe-stat__item-icon"
-            :icon-name="'schedule'"
-          ></SpanIcon>
+          <SpanIcon class="recipe-stat__item-icon"
+                    :icon-name="'schedule'"></SpanIcon>
           <dt>cook time</dt>
           <dd>{{ recipe.cookTime }}</dd>
         </div>
         <div class="recipe-stat__item">
-          <SpanIcon
-            class="recipe-stat__item-icon"
-            :icon-name="'schedule'"
-          ></SpanIcon>
+          <SpanIcon class="recipe-stat__item-icon"
+                    :icon-name="'schedule'"></SpanIcon>
           <dt>total time</dt>
           <dd>{{ recipe.totalTime }}</dd>
         </div>
@@ -61,14 +49,12 @@
           <h4 class="recipe-content__subtitle">Graham Cracker Crust</h4>
           <ul>
             <li>
-              <VCheckbox
-                :model-value="true"
-                class="recipe__checkbox"
-                id="ingr1"
-                name="ingr1"
-                :on="true"
-                :checked="true"
-              >
+              <VCheckbox :model-value="true"
+                         class="recipe__checkbox"
+                         id="ingr1"
+                         name="ingr1"
+                         :on="true"
+                         :checked="true">
                 <template v-slot:label>
                   1 and 1/2 cups (150g) <b>graham cracker crumbs</b> (about 10
                   full sheet graham crackers)
@@ -76,22 +62,18 @@
               </VCheckbox>
             </li>
             <li>
-              <VCheckbox
-                class="recipe__checkbox"
-                id="ingr2"
-                name="ingr2"
-              >
+              <VCheckbox class="recipe__checkbox"
+                         id="ingr2"
+                         name="ingr2">
                 <template v-slot:label>
                   5 Tablespoons (70g) <b>unsalted butter</b>, melted
                 </template>
               </VCheckbox>
             </li>
             <li>
-              <VCheckbox
-                class="recipe__checkbox"
-                id="ingr3"
-                name="ingr3"
-              >
+              <VCheckbox class="recipe__checkbox"
+                         id="ingr3"
+                         name="ingr3">
                 <template v-slot:label>
                   1/4 cup (50g) <b>granulated sugar</b>
                 </template>
@@ -103,11 +85,9 @@
           <h4 class="recipe-content__subtitle">Cheesecake</h4>
           <ul>
             <li>
-              <VCheckbox
-                class="recipe__checkbox"
-                id="ingr21"
-                name="ingr21"
-              >
+              <VCheckbox class="recipe__checkbox"
+                         id="ingr21"
+                         name="ingr21">
                 <template v-slot:label>
                   four 8-ounce blocks (904g) full-fat <b>cream cheese</b>,
                   softened to room temperature
@@ -115,44 +95,36 @@
               </VCheckbox>
             </li>
             <li>
-              <VCheckbox
-                class="recipe__checkbox"
-                id="ingr22"
-                name="ingr22"
-              >
+              <VCheckbox class="recipe__checkbox"
+                         id="ingr22"
+                         name="ingr22">
                 <template v-slot:label>
                   1 cup (200g) <b>granulated sugar</b>
                 </template>
               </VCheckbox>
             </li>
             <li>
-              <VCheckbox
-                class="recipe__checkbox"
-                id="ingr23"
-                name="ingr23"
-              >
+              <VCheckbox class="recipe__checkbox"
+                         id="ingr23"
+                         name="ingr23">
                 <template v-slot:label>
                   1 cup (240g) full-fat <b>sour cream</b>, at room temperature
                 </template>
               </VCheckbox>
             </li>
             <li>
-              <VCheckbox
-                class="recipe__checkbox"
-                id="ingr24"
-                name="ingr24"
-              >
+              <VCheckbox class="recipe__checkbox"
+                         id="ingr24"
+                         name="ingr24">
                 <template v-slot:label>
                   1 teaspoon <b>pure vanilla extract</b>
                 </template>
               </VCheckbox>
             </li>
             <li>
-              <VCheckbox
-                class="recipe__checkbox"
-                id="ingr25"
-                name="ingr25"
-              >
+              <VCheckbox class="recipe__checkbox"
+                         id="ingr25"
+                         name="ingr25">
                 <template v-slot:label>
                   2 teaspoons <b>fresh lemon juice</b> (optional, but
                   recommended)
@@ -160,29 +132,23 @@
               </VCheckbox>
             </li>
             <li>
-              <VCheckbox
-                class="recipe__checkbox"
-                id="ingr26"
-                name="ingr26"
-              >
+              <VCheckbox class="recipe__checkbox"
+                         id="ingr26"
+                         name="ingr26">
                 <template v-slot:label>
                   3 large <b>eggs</b>, at room temperature
                 </template>
               </VCheckbox>
             </li>
             <li>
-              <VCheckbox
-                class="recipe__checkbox"
-                id="ingr27"
-                name="ingr27"
-              >
+              <VCheckbox class="recipe__checkbox"
+                         id="ingr27"
+                         name="ingr27">
                 <template v-slot:label>
                   topping suggestions:
-                  <i
-                    >salted caramel, lemon curd, strawberry topping, chocolate
+                  <i>salted caramel, lemon curd, strawberry topping, chocolate
                     ganache, red wine chocolate ganache, fresh fruit, whipped
-                    cream, or raspberry sauce</i
-                  >
+                    cream, or raspberry sauce</i>
                   (recipe in notes)
                 </template>
               </VCheckbox>
@@ -193,20 +159,15 @@
       <!--  -->
       <h3 class="recipe-content__title">Instructions</h3>
       <ol>
-        <li
-          v-for="(item, index) in recipe.instrucions"
-          :key="index"
-        >
+        <li v-for="(item, index) in recipe.instrucions"
+            :key="index">
           <p v-html="item.text"></p>
         </li>
       </ol>
 
-      <a
-        class="recipe-content__src-link"
-        :href="recipe.sourceHref"
-        _target="blank"
-        >Link to the source article</a
-      >
+      <a class="recipe-content__src-link"
+         :href="recipe.sourceHref"
+         _target="blank">Link to the source article</a>
     </div>
   </div>
 </template>
@@ -270,21 +231,26 @@ export default {
   gap: 1rem;
   padding: 0 1rem;
   max-width: 1030px;
+
   @media (min-width: 475px) {
     padding: 0 1.5rem;
   }
+
   @media (min-width: $width-tablet) {
     grid-template-columns: 1fr 210px;
     column-gap: 2rem;
   }
+
   @media (min-width: $width-tablet-h) {
     gap: 2rem;
     padding: 0 2rem;
   }
 }
+
 .recipe__header {
   grid-column: 1/-1;
 }
+
 .recipe__title {
   font-size: size(24px);
   line-height: size(32px);
@@ -295,6 +261,7 @@ export default {
     line-height: size(64px);
   }
 }
+
 .recipe__text {
   color: var(--text-color-gray);
   font-size: size(12px);
@@ -303,6 +270,7 @@ export default {
   position: relative;
   padding-left: 2rem;
   margin-bottom: size(10px);
+
   &::before {
     content: "";
     position: absolute;
@@ -314,12 +282,14 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
   }
+
   @media (min-width: $width-tablet) {
     font-size: size(14px);
     line-height: size(17px);
     margin-bottom: 1.5rem;
   }
 }
+
 .recipe__img-wrap {
   background: #c4c4c4;
   border-radius: 12px;
@@ -328,6 +298,8 @@ export default {
   width: 100%;
   height: auto;
   aspect-ratio: 1.64/1;
+  box-shadow: var(--box-shadow);
+
   img {
     border-radius: inherit;
     overflow: hidden;
@@ -338,9 +310,13 @@ export default {
     left: 0;
     object-fit: cover;
   }
+
+  @media (prefers-color-scheme: dark) {}
 }
+
 // aside
 .recipe__stat-block {
+
   @media (min-width: $width-tablet) {
     grid-column: 2/3;
     align-self: start;
@@ -351,17 +327,24 @@ export default {
     padding: 3rem 2rem;
     border-radius: 12px;
   }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #525252;
+  }
 }
+
 .recipe-stat {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 1rem;
+
   @media (min-width: $width-tablet) {
     gap: 2rem;
   }
 }
+
 .recipe-stat__item {
   display: grid;
   grid-template-columns: auto auto;
@@ -376,22 +359,27 @@ export default {
     font-weight: 700;
     text-transform: uppercase;
   }
+
   dd {
     font-size: size(12px);
     line-height: size(14px);
   }
 }
+
 .recipe-stat__item--colored {
   flex: 1 0 100%;
+
   .recipe-stat__item-icon,
   dd {
     color: var(--color-orange);
   }
 }
+
 .recipe-stat__item-icon {
   grid-column: 1/2;
   grid-row: 1/3;
 }
+
 // content
 .recipe__content {
   @media (min-width: $width-tablet) {
@@ -399,6 +387,7 @@ export default {
     grid-row: 2/3;
   }
 }
+
 .recipe-content {
   ul {
     li:not(:last-child) {
@@ -423,6 +412,7 @@ export default {
       // counter-increment: li;
       padding-left: 51px;
       position: relative;
+
       &::before {
         counter-increment: list;
         content: counter(list);
@@ -441,11 +431,13 @@ export default {
         left: 0;
       }
     }
+
     li:not(:last-child) {
       margin-bottom: 0.75rem;
     }
   }
 }
+
 .recipe-content__title {
   font-weight: 700;
   font-size: size(24px);
@@ -460,6 +452,7 @@ export default {
   line-height: size(21px);
   margin-bottom: 0.75rem;
 }
+
 .recipe-content__src-link {
   display: inline-block;
   vertical-align: middle;
@@ -468,6 +461,7 @@ export default {
   font-size: size(12px);
   line-height: size(18px);
 }
+
 .recipe__checkbox {
   --primary-color: #f2994a;
   display: grid;
