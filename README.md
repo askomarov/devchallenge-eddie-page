@@ -1,4 +1,4 @@
-<!-- Please update value in the {}  -->
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0417e3a1-90e1-43f1-9080-d593c7a4e032/deploy-status)](https://app.netlify.com/sites/sparkly-rolypoly-27c579/deploys)
 
 <h1 align="center">HTML CSS Vue.js Home page</h1>
 
